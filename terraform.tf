@@ -7,7 +7,7 @@ terraform {
     organization = "FIAP-TEAM-73"
 
     workspaces {
-      name = "terraform-infra-eks"
+      name = "terraform-infra-k8s"
     }
   }
 
