@@ -13,5 +13,5 @@ variable "role" {
 
 variable "cluster_name" {
   description = "Cluster name"
-  default = "tech-challenge-73"
+  default     = "tech-challenge-73"
 }
