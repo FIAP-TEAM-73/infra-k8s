@@ -6,11 +6,11 @@ provider "aws" {
 }
 
 resource "aws_eks_cluster" "tech-challenge-73" {
-  name     = "tech-challenge-73"
+  name     = var.cluster_name
   role_arn = var.role
-  version  = "1.30"
+  version  = "1.31"
   vpc_config {
-    subnet_ids              = var.subnets
+    subnet_ids              = [for subnet in data.aws_subnet.subnet : subnet.id if subnet.availability_zone != "${var.region}e"]
     security_group_ids      = ["sg-03994733d8fddaebd"]
     endpoint_private_access = true
     endpoint_public_access  = true
