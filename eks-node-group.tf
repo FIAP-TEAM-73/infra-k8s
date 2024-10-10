@@ -1,7 +1,10 @@
+locals {
+  node_role_arn = "arn:aws:iam::${var.account_id}:role/LabRole"
+}
 resource "aws_eks_node_group" "group-1" {
   cluster_name    = aws_eks_cluster.tech-challenge-73.name
   node_group_name = "group1"
-  node_role_arn   = var.role
+  node_role_arn   = local.node_role_arn
   subnet_ids      = [for subnet in data.aws_subnet.subnet : subnet.id if subnet.availability_zone != "${var.region}e"]
 
   scaling_config {
@@ -20,7 +23,7 @@ resource "aws_eks_node_group" "group-1" {
 resource "aws_eks_node_group" "group-2" {
   cluster_name    = aws_eks_cluster.tech-challenge-73.name
   node_group_name = "group2"
-  node_role_arn   = var.role
+  node_role_arn   = local.node_role_arn
   subnet_ids      = [for subnet in data.aws_subnet.subnet : subnet.id if subnet.availability_zone != "${var.region}e"]
 
   scaling_config {
