@@ -11,11 +11,11 @@ variable "cluster_name" {
 }
 
 variable "account_id" {
-  type = string
+  type        = string
   description = "AWS Academy account id"
 }
 
 variable "default_security_group" {
-  type = string
+  type        = string
   description = "AWS Academy default security group"
 }
