@@ -9,7 +9,7 @@ resource "aws_eks_node_group" "group-1" {
 
   scaling_config {
     desired_size = 1
-    max_size     = 2
+    max_size     = 3
     min_size     = 1
   }
 
@@ -27,13 +27,13 @@ resource "aws_eks_node_group" "group-2" {
   subnet_ids      = [for subnet in data.aws_subnet.subnet : subnet.id if subnet.availability_zone != "${var.region}e"]
 
   scaling_config {
-    desired_size = 1
-    max_size     = 2
-    min_size     = 1
+    desired_size = 2
+    max_size     = 4
+    min_size     = 2
   }
 
   update_config {
-    max_unavailable = 1
+    max_unavailable = 2
   }
 
   instance_types = ["t3.medium"]
